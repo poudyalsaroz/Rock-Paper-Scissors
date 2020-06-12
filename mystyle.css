@@ -1,0 +1,76 @@
+.top{
+	background-color: lightblue;
+	margin: auto;
+	text-align: center;
+	padding: 25px, 25px, 25px, 25px;
+}
+
+table.buttons {
+	margin-left: auto;
+	margin-right: auto;
+	border: 0px;
+}
+
+img.button {
+	height: 200px;
+	padding: 10px 10px 10px 10px;
+}
+
+.score{
+	background-color: green;
+	margin: auto;
+	text-align: center;
+	color: white;
+}
+
+table.results{
+	margin: auto;
+}
+
+th, td.scores {
+	font-family: "Arial Black", Gadget, sans-serif;
+	padding-left: 50px;
+	padding-right: 50px;
+}
+
+p.tally {
+	color: red;
+	text-align: center;
+}
+
+table.bottomNavigation {
+	background-color: blue;
+	color: white;
+	width: 100%
+}
+
+#bottom-nav {
+	width: 100%;
+	padding: 0;
+	list-style: none;
+	background-color: #f2f2f2;
+	border-top: 1px solid #e4e4e4;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+}
+
+#bottom-nav li {
+	text-decoration: none;
+	padding: 15px 12px 8px;
+	font-family: Arial;
+	font-size: 14px;
+	color: #5f6368;
+	line-height: 25px;
+	text-align: center;
+}
+
+
+td.bottoms{
+	width: auto;
+	height: auto;
+}
+
+#bottom-nav li a:hover{
+	text-decoration: underline;
+}

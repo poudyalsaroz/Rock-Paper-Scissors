@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="mystyle.css">
+</head>
+<body>
+
+<script>
+var playerWin = 0;
+var compWin = 0;
+var rnd = 1;
+
+function rockButton() {
+	window.playerSelection = 'rock';
+	console.log('Round: '+ (round +1 ));
+	game();
+}
+
+function paperButton(){
+	window.playerSelection = 'paper';
+	console.log('Round: '+(round + 1));
+	game();
+}
+
+function scissorsButton(){
+	window.playerSelection = 'scissors';
+	console.log('Round: '+(round + 1));
+	game();
+}
+
+var playerSelection = window.playerSelection;
+
+function computerPlay(){
+	var rNumber = Math.floor(Math.random() * 3) + 1;
+	if( rNumber == 1){
+		return "rock";
+	}
+	else if( rNumber == 2){
+		return "paper";
+	}
+	else {
+		return "scissors";
+	}
+}
+
+function playRound(playerSelection, computerSelection){
+	if(playerSelection === computerSelection){
+		document.getElementById('score').innerHTML =  "Game tied! Try again."
+	}
+	else if(playerSelection === "rock"){
+		if(computerSelection === "scissors"){
+			playerWin += 1;
+			document.getElementById('score').innerHTML =   "You win! Rock beats Scissors.";
+		}
+		else if(computerSelection === "paper"){
+			compWin += 1;
+			document.getElementById('score').innerHTML =  "You Lose! Paper beats Rock.";
+		}
+		
+	}
+	else if(playerSelection === "paper"){
+		if(computerSelection === "rock"){
+			playerWin += 1;
+			document.getElementById('score').innerHTML =  "You win! Paper beats Rock.";
+		}
+		else if(computerSelection === "scissors"){
+			compWin += 1;
+			document.getElementById('score').innerHTML =   "You Lose! Scissors beats Paper.";
+		}
+	}
+	else if(playerSelection == "scissors"){
+		if(computerSelection === "paper"){
+			playerWin += 1;
+			document.getElementById('score').innerHTML =  "You win! Scissors beats Paper.";
+		}
+		else if(computerSelection === "rock"){
+			compWin += 1;
+			document.getElementById('score').innerHTML =   "You Lose! Rock beats Scissors.";
+		}
+	}
+	
+}
+
+function game(){
+	
+	let comp = computerPlay();
+	playRound(playerSelection, comp);
+	
+	document.getElementById('playerScore').innerHTML = 'Player Score:<br>' + playerWin;
+	document.getElementById('computerScore').innerHTML = 'Computer Score:<br>' + compWin;
+	document.getElementById('round').innerHTML = 'Round '+(rnd + 1)+ ' of 5';
+	
+	if(rnd == 5){
+		rnd = 0;
+		document.getElementById('round').innerHTML = 'Round '+(rnd + 1)+ ' of 5';
+		document.getElementById('score').innerHTML = 'Score';
+	
+		if(playerWin > compWin){
+			alert ("Congratulations, You won the 5 match series!");
+			playerWin = 0;
+			compWin = 0;
+		}
+		else if(playerWin == compWin){
+			alert("You tied in the 5 match series!");
+			playerWin = 0;
+			compWin = 0;
+		}
+		else{
+			alert("Oops! You lost. Better luck next time.");
+			playerWin = 0;
+			compWin = 0;
+		}
+	}
+	
+	document.getElementById('playerScore').innerHTML = 'Player Score:<br>' + playerWin;
+	document.getElementById('computerScore').innerHTML = 'Computer Score:<br>' + compWin;
+	rnd++;
+
+}
+</script>
+
+<div class="top">
+	<h1>Rock Paper Scissors</h1>
+</div>
+
+<h2 class="round" id="round">Round 1 of 5</h2>
+
+<table class="buttons">
+	<tr>
+		<td><img class="button" onclick="rockButton()" src="rock.png">
+		<td><img class="button" onclick="paperButton()" src="paper.png">
+		<td><img class="button" onclick="scissorsButton()" src="scissors.png">
+	</tr>
+</table>
+
+<div class='score'>
+	<h2 id="score">Score</h2>
+</div>
+
+<table class="results">
+	<tr>
+		<td class="scores"><p class="tally" id='playerScore'>Player Score:<br>0</p></td>
+		<td class="scores"><p class="tally" id='computerScore'>Computer Score:<br>0</p></td>
+	</tr>
+</table>
+
+<footer>
+	<table class='bottomNavigation'>
+		<tr>
+			<td><h3>CalPolyPomona</h2></td>
+			<td class= "bottoms"><a href="">About Cal Poly Pomona</a></td>
+			<td class= "bottoms"><a href="">Feedback</a></td>
+			<td class= "bottoms"><a href="">Privacy</a></td>
+			<td class= "bottoms"><a href="">Accessibility</a></td>
+			<td class= "bottoms"><a href="">Document Readers</a></td>
+		</tr>
+		<tr>
+			<td><p>3801 West Temple Avenue, Pomona, CA 91768</p></td>
+		</tr>
+		<tr>
+			<td><p>2020 California State Polytechnic University, Pomona</p></td>
+		</tr>
+		<tr>
+			<td><p> All Rights Reserved</p></td>
+		</tr>
+	</table>
+	</footer>
+</body>
+</html>
